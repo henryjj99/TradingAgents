@@ -477,9 +477,10 @@ def get_user_selections():
         if 'DEEPSEEK_API_KEY' not in os.environ:
             console.print("[bold red]DEEPSEEK_API_KEY environment variable not set.[/bold red]")
             raise typer.Exit(1)
-        # The API key is passed to the graph, so no need to set it here directly
-        # but we can add it to the config if needed elsewhere.
+        # Explicitly set the API key in the config
         DEFAULT_CONFIG['deepseek_api_key'] = os.environ['DEEPSEEK_API_KEY']
+        # Also set OPENAI_API_KEY since ChatOpenAI will look for this
+        os.environ['OPENAI_API_KEY'] = os.environ['DEEPSEEK_API_KEY']
     
     # Step 6: Thinking agents
     console.print(
