@@ -471,6 +471,15 @@ def get_user_selections():
     )
     selected_llm_provider, backend_url = select_llm_provider()
     
+    # Set API key for DeepSeek
+    if selected_llm_provider.lower() == 'deepseek':
+        if 'DEEPSEEK_API_KEY' not in os.environ:
+            console.print("[bold red]DEEPSEEK_API_KEY environment variable not set.[/bold red]")
+            raise typer.Exit(1)
+        # The API key is passed to the graph, so no need to set it here directly
+        # but we can add it to the config if needed elsewhere.
+        DEFAULT_CONFIG['deepseek_api_key'] = os.environ['DEEPSEEK_API_KEY']
+    
     # Step 6: Thinking agents
     console.print(
         create_question_box(
