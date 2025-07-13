@@ -254,7 +254,7 @@ def select_llm_provider() -> tuple[str, str]:
         ("Google", "https://generativelanguage.googleapis.com/v1"),
         ("Openrouter", "https://openrouter.ai/api/v1"),
         ("Ollama", "http://localhost:11434/v1"),  
-        ("DeepSeek", "http://api.deepseek.com/"),      
+        ("DeepSeek", "https://api.deepseek.com/v1"),      
     ]
     
     choice = questionary.select(
