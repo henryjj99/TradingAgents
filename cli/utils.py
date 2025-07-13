@@ -152,6 +152,9 @@ def select_shallow_thinking_agent(provider) -> str:
         "ollama": [
             ("llama3.1 local", "llama3.1"),
             ("llama3.2 local", "llama3.2"),
+        ],
+        "DeepSeek": [
+            ("deepseek-reasoner", "deepseek-reasoner"),
         ]
     }
 
@@ -214,6 +217,9 @@ def select_deep_thinking_agent(provider) -> str:
         "ollama": [
             ("llama3.1 local", "llama3.1"),
             ("qwen3", "qwen3"),
+        ],
+        "DeepSeek": [
+            ("deepseek-reasoner", "deepseek-reasoner"),
         ]
     }
     
@@ -247,7 +253,8 @@ def select_llm_provider() -> tuple[str, str]:
         ("Anthropic", "https://api.anthropic.com/"),
         ("Google", "https://generativelanguage.googleapis.com/v1"),
         ("Openrouter", "https://openrouter.ai/api/v1"),
-        ("Ollama", "http://localhost:11434/v1"),        
+        ("Ollama", "http://localhost:11434/v1"),  
+        ("DeepSeek", "http://api.deepseek.com/"),      
     ]
     
     choice = questionary.select(
